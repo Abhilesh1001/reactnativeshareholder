@@ -1,13 +1,61 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+import { Provider, useSelector } from 'react-redux';
+import { store } from './app/store';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Signup from './app/auth/signup/Signup';
+import Login from './app/auth/login/Login';
+import ShopTab from './app/screen/ShopTab';
+import UserPanelTab from './app/screen/UserPanelTab';
+import LoanCollection from './app/loan/LoanCollection';
+
+
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import { StateProps } from './type/user';
+
+
+export type RootStackParamList = {
+  ShopTab: undefined;
+  Login: undefined;
+  Signup: undefined;
+  UserPanelTab: undefined;
+  LoanCollection: undefined;
+};
+const queryClient = new QueryClient()
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+function App() {
+  const {user} = useSelector((state:StateProps)=>state.counter)
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        {/* first child for this create drawer navigater */}
+        <Stack.Screen name="ShopTab" component={ShopTab} options={{ headerShown: false }} />
+       <Stack.Screen name="Login" component={Login} options={{}} />
+        <Stack.Screen name="UserPanelTab" component={UserPanelTab} options={{ headerShown: false }} />
+
+        <Stack.Screen name="Signup" component={Signup} options={{}} />
+        <Stack.Screen name="LoanCollection" component={LoanCollection} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
+}
+
+export default () => {
+  return (
+    <Provider store={store} >
+      <QueryClientProvider client={queryClient}>
+      <App />
+      </QueryClientProvider>
+    </Provider>
+  )
 }
 
 const styles = StyleSheet.create({
