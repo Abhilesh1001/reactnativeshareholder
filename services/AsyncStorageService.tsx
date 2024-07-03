@@ -24,7 +24,7 @@ const getAccessToken = async ()=>{
     try {
       
         const token = await AsyncStorage.getItem('access')
-        console.log('tokenget',token)
+        // console.log('tokenget',token)
         if(token !==null){
             return token
         }

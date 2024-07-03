@@ -15,7 +15,7 @@ export default function Login() {
 
   return (
 <View>
-    <Toast config={toastConfig} />
+    <Toast config={toastConfig}  />
        <View style={styles.container}>
        <View style={styles.inputWithlabel} >
         <Text style={styles.labelText}>Email</Text>

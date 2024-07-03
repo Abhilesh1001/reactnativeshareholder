@@ -10,6 +10,7 @@ import Login from './app/auth/login/Login';
 import ShopTab from './app/screen/ShopTab';
 import UserPanelTab from './app/screen/UserPanelTab';
 import LoanCollection from './app/loan/LoanCollection';
+import LoanCollectionView from './app/loan/LoanCollectionView';
 
 
 import {
@@ -25,6 +26,7 @@ export type RootStackParamList = {
   Signup: undefined;
   UserPanelTab: undefined;
   LoanCollection: undefined;
+  LoanCollectionView: undefined;
 };
 const queryClient = new QueryClient()
 
@@ -43,6 +45,7 @@ function App() {
 
         <Stack.Screen name="Signup" component={Signup} options={{}} />
         <Stack.Screen name="LoanCollection" component={LoanCollection} />
+        <Stack.Screen name="LoanCollectionView" component={LoanCollectionView} />
       </Stack.Navigator>
     </NavigationContainer>
   );

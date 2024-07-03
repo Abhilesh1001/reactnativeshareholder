@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TextInput, Button, Platform } from 'react-native'
 import React, { useState } from 'react'
 
-import { styles, toastConfig } from '../style'
+import { styles, toastConfig, styles1 } from '../style'
 
 import { useLoan } from '../hooks/loan/useLoan'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
@@ -12,30 +12,13 @@ import Toast from 'react-native-toast-message';
 
 export default function LoanCollection() {
 
-  const { loanID, handleChange, setLoanID, handleLoanPerson, data, setData, collectin_date, setCollectiondate, handleChangeDate,handleSubmitAmount } = useLoan()
-
-
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-
-  const showDatePicker = () => {
-    setDatePickerVisibility(true);
-  };
-
-  const hideDatePicker = () => {
-    setDatePickerVisibility(false);
-  };
-
-  const handleConfirm = (date: any) => {
-    console.warn("A date has been picked: ", date);
-    setCollectiondate(date)
-    hideDatePicker();
-  };
+  const { loanID, handleChange, setLoanID, handleLoanPerson, data, collectin_date, handleSubmitAmount, showDatePicker, isDatePickerVisible, handleConfirm, hideDatePicker } = useLoan()
 
 
   return (
     <View style={{ padding: 10 }}>
-      <View >
-      <Toast   />
+      <View style={{ zIndex: 5000 }} >
+        <Toast />
       </View>
 
       <Text style={{ marginTop: 5 }}>Enter Loan ID</Text>
@@ -100,14 +83,5 @@ export default function LoanCollection() {
 }
 
 
-const styles1 = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  datePicker: {
-    width: 200,
-  },
-});
+
 

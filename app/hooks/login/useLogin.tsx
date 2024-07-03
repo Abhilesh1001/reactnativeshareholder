@@ -46,7 +46,7 @@ export const useLogin = () => {
             const res = response.data
             const tokenRefresh = res.token.refresh;
             const tokenAcess = res.token.access;
-            console.log(tokenAcess)
+            // console.log(tokenAcess)
             await storeAccessToken(tokenAcess)
             await storeRefreshToken(tokenRefresh)
             dispatch(getAuthToken({ 'refresh': tokenRefresh, 'access': tokenAcess }));
@@ -79,7 +79,7 @@ export const useLogin = () => {
     // updatetoken 
 
     const updataToken = async () => {
-        console.log('refrehtoken', authToken?.refresh)
+        // console.log('refrehtoken', authToken?.refresh)
 
         try {
             const data: { data: { access: string }, status: number } = await axios.post(`${baseurl}cus/api/token/refresh/`, { 'refresh': authToken?.refresh });
@@ -102,7 +102,7 @@ export const useLogin = () => {
 
 
     useEffect(() => {
-        const time = 1000 * 60;
+        const time = 1000 * 10 * 60;
 
         const initializeAuth = async () => {
             const tokenAccess = await getAccessToken();

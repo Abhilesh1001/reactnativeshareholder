@@ -31,6 +31,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 5,
   },
+  textMargin : {
+    marginBottom: 10,
+    marginTop: 5,
+  }
 });
 
 export const toastConfig = {
@@ -99,4 +103,19 @@ const toastStyles = StyleSheet.create({
   },
 });
 
-export { styles };
+const styles1 = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  datePicker: {
+    width: 200,
+  },
+});
+
+
+
+
+
+export { styles,styles1 };

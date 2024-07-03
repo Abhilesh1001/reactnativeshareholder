@@ -4,7 +4,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { View, Text } from 'react-native';
 import { useSelector } from 'react-redux';
 import { useLogin } from './hooks/login/useLogin';
-import LoanCollection from './loan/LoanCollection';
+
 
 
 export type StateProps = {
@@ -19,7 +19,8 @@ export type StateProps = {
 
 type RootStackParamList = {
     Login: undefined;
-    LoanCollection:undefined
+    LoanCollection:undefined;
+    LoanCollectionView: undefined;
 };
 
 
@@ -37,6 +38,7 @@ export default function SideBar(props: DrawerContentComponentProps) {
             <DrawerItemList {...props} />
             <DrawerItem label='Logout' onPress={handleLogout} />
             <DrawerItem label='LoanCollection'  onPress={()=>navigation.navigate('LoanCollection')} />
+            <DrawerItem label='Loan Collection View'  onPress={()=>navigation.navigate('LoanCollectionView')} />
         </DrawerContentScrollView>
     );
 }
