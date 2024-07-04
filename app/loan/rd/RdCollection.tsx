@@ -1,18 +1,16 @@
-import { View, Text, StyleSheet, TextInput, Button, Platform } from 'react-native'
-import React, { useState } from 'react'
-
-import { styles, toastConfig, styles1 } from '../style'
-
-import { useLoan } from '../hooks/loan/useLoan'
+import { View, Text, TextInput,Button } from 'react-native'
+import React from 'react'
+import Toast from 'react-native-toast-message'
+import { useRdCollection } from '../../hooks/rd/useRdCollection'
+import { styles,styles1 } from '../../style'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import Toast from 'react-native-toast-message';
 
 
 
+export default function RdCollection() {
 
-export default function LoanCollection() {
-
-  const { loanID, handleChange, setLoanID, handleLoanPerson, data, collectin_date, handleSubmitAmount, showDatePicker, isDatePickerVisible, handleConfirm, hideDatePicker } = useLoan()
+    const {RdId, setRdID, handleLoanPerson, mutation, data, handleChange, setData, collectin_date, setCollectiondate, handleChangeDate, handleSubmitAmount ,showDatePicker,isDatePickerVisible,handleConfirm,hideDatePicker} = useRdCollection()
+   
 
 
   return (
@@ -24,9 +22,9 @@ export default function LoanCollection() {
       <Text style={{ marginTop: 5 }}>Enter Loan ID</Text>
       <TextInput
         style={styles.input}
-        value={loanID}
-        onChangeText={(text: any) => setLoanID(text)}
-        placeholder='Write Loan ID'
+        value={RdId}
+        onChangeText={(text: any) => setRdID(text)}
+        placeholder='Write Person ID'
       />
       <View style={{ marginTop: 10 }}>
         <Button title='Enter' color='green' onPress={handleLoanPerson} />
@@ -34,7 +32,7 @@ export default function LoanCollection() {
           <>
             <View style={{ display: 'flex', marginTop: 10, flexDirection: 'row' }}>
               <Text>Loan Id : </Text>
-              <Text>{data.loan_id}</Text>
+              <Text>{data.Rd_id}</Text>
             </View>
             <View style={{ display: 'flex', marginTop: 10, flexDirection: 'row' }}>
               <Text>Name : </Text>
@@ -73,15 +71,5 @@ export default function LoanCollection() {
 
       </View>
     </View>
-
-
-
-
-
-
   )
 }
-
-
-
-

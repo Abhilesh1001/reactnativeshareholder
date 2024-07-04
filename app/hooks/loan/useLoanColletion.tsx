@@ -11,8 +11,6 @@ import Toast from "react-native-toast-message";
 export const useLoanCollection =()=>{
 
     const { authToken, userId } = useSelector((state: StateProps) => state.counter)
-
-    const [data,setData] = useState({})
     
     const [collectin_date, setCollectiondate] = useState(new Date())
 
@@ -45,7 +43,7 @@ export const useLoanCollection =()=>{
           }
         },
         onSuccess: (data) => {
-          console.log(data.data);
+        //   console.log(data.data);
         },
         onError: (error) => {
           console.error('Error response:', error.response);

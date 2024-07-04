@@ -13,11 +13,14 @@ import LoanCollection from './app/loan/LoanCollection';
 import LoanCollectionView from './app/loan/LoanCollectionView';
 
 
+
 import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { StateProps } from './type/user';
+import RdCollection from './app/loan/rd/RdCollection';
+import RdCollectionView from './app/loan/rd/RdCollectionView';
 
 
 export type RootStackParamList = {
@@ -27,6 +30,8 @@ export type RootStackParamList = {
   UserPanelTab: undefined;
   LoanCollection: undefined;
   LoanCollectionView: undefined;
+  RdCollectionView: undefined;
+  RdCollection: undefined;
 };
 const queryClient = new QueryClient()
 
@@ -46,6 +51,8 @@ function App() {
         <Stack.Screen name="Signup" component={Signup} options={{}} />
         <Stack.Screen name="LoanCollection" component={LoanCollection} />
         <Stack.Screen name="LoanCollectionView" component={LoanCollectionView} />
+        <Stack.Screen name="RdCollectionView" component={RdCollection} />
+        <Stack.Screen name="RdCollection" component={RdCollectionView} />
       </Stack.Navigator>
     </NavigationContainer>
   );

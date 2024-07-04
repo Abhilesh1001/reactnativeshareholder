@@ -21,6 +21,8 @@ type RootStackParamList = {
     Login: undefined;
     LoanCollection:undefined;
     LoanCollectionView: undefined;
+    RdCollectionView: undefined;
+    RdCollection: undefined;
 };
 
 
@@ -39,6 +41,8 @@ export default function SideBar(props: DrawerContentComponentProps) {
             <DrawerItem label='Logout' onPress={handleLogout} />
             <DrawerItem label='LoanCollection'  onPress={()=>navigation.navigate('LoanCollection')} />
             <DrawerItem label='Loan Collection View'  onPress={()=>navigation.navigate('LoanCollectionView')} />
+            <DrawerItem label='RD Collection'  onPress={()=>navigation.navigate('RdCollection')} />
+            <DrawerItem label='RD Collection View'  onPress={()=>navigation.navigate('RdCollectionView')} />
         </DrawerContentScrollView>
     );
 }
