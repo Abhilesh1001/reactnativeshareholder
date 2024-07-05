@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
-import { baseurl } from "../../alldata/basedata"
+import { baseurl } from "../../app/alldata/basedata"
 import axios from "axios"
 import { useSelector } from "react-redux"
-import { StateProps } from "../../../type/user"
+import { StateProps } from "../../type/user"
 import Toast from "react-native-toast-message"
 
 interface datatypeRD {
@@ -33,19 +33,19 @@ export const useRdCollection=()=>{
 
 
       const mutation = useMutation({
-        mutationFn: async (loanID) => {
-          return await axios.get(`${baseurl}loan/loanamount/${loanID}`, {
+        mutationFn: async (RdId) => {
+          return await axios.get(`${baseurl}loan/rdintrest/${RdId}`, {
             headers: {
               Authorization: `Bearer ${authToken?.access}`
             }
           })
         },
         onSuccess: (data) => {
-          // console.log(data.data)
+        //   console.log(data.data)
           setData((prev) => {
             return {
               ...prev,
-              Rd_id: data.data.loan_id,
+              Rd_id: data.data.rd_id,
               person_name: data.data.person_name,
               person_id: data.data.person_id
             }
@@ -84,19 +84,56 @@ export const useRdCollection=()=>{
         setData({ ...data, amount_collected: numericValue });
       };
 
+
+
+
+
+
       
+  const mutationRD = useMutation<any, any, any, unknown>({
+    mutationFn: async (newTodo: any) => {
+      return await axios.post(`${baseurl}loan/rdcollectionPer`, newTodo, {
+        headers: {
+          Authorization: `Bearer ${authToken?.access}`
+        }
+      })
+    },
+    onSuccess: () => {
+
+      setData({ Rd_id: null, person_name: '', person_id: null, collection_date: String(new Date()), amount_collected: null, remarks: '', usersf: null })
+      Toast.show({
+        type: 'success',
+        text1: 'You are successfully added data',
+        position: 'top',
+        topOffset: 0,
+        visibilityTime: 1000,
+      });
+
+    },
+    onError: (error) => {
+      // toast.error('Enter all required Fields',{position:'top-right'})
+      Toast.show({
+        type: 'error',
+        text1: 'Please enter correct Loan ID',
+        position: 'top',
+        topOffset: 0,
+
+      });
+    }
+  })
       
   const handleSubmitAmount = () => {
     const newData = {
       usersf: userId,
-      loan_intrest: data.Rd_id,
+      rd_interest: data.Rd_id,
       amount_collected: data.amount_collected,
       remarks: data.remarks,
       collection_date: collectin_date
     }
+    console.log(newData)
 
 
-    // mutationLoan.mutate(newData)
+    mutationRD.mutate(newData)
 
   }
 

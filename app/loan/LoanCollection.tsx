@@ -1,11 +1,13 @@
-import { View, Text, StyleSheet, TextInput, Button, Platform } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Button, Platform,SafeAreaView,ScrollView } from 'react-native'
 import React, { useState } from 'react'
 
 import { styles, toastConfig, styles1 } from '../style'
 
-import { useLoan } from '../hooks/loan/useLoan'
+import { useLoan } from '../../hooks/loan/useLoan'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import Toast from 'react-native-toast-message';
+
+
 
 
 
@@ -16,6 +18,11 @@ export default function LoanCollection() {
 
 
   return (
+    <SafeAreaView>
+      <ScrollView>
+        
+     
+    
     <View style={{ padding: 10 }}>
       <View style={{ zIndex: 5000 }} >
         <Toast />
@@ -73,7 +80,8 @@ export default function LoanCollection() {
 
       </View>
     </View>
-
+    </ScrollView>
+    </SafeAreaView>
 
 
 

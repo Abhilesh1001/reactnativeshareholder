@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
-import { baseurl } from '../../alldata/basedata'
+import { baseurl } from '../../app/alldata/basedata'
 import Toast from 'react-native-toast-message'
 import { jwtDecode } from "jwt-decode";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAuthToken, getUser, getUserId, clearAuthToken, clearUser, getMainheader } from '../../../redux/slice';
-import { StateProps } from '../../../type/user'
-import { storeAccessToken, getAccessToken, removeToken, storeRefreshToken, getRefreshToken } from '../../../services/AsyncStorageService';
+import { getAuthToken, getUser, getUserId, clearAuthToken, clearUser, getMainheader } from '../../redux/slice';
+import { StateProps } from '../../type/user'
+import { storeAccessToken, getAccessToken, removeToken, storeRefreshToken, getRefreshToken } from '../../services/AsyncStorageService';
 
 
 export type RootStackParamList = {

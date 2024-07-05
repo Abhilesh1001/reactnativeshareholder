@@ -2,14 +2,14 @@ import { View, Text, TextInput,Button } from 'react-native'
 import React from 'react'
 import Toast from 'react-native-toast-message'
 import { useRdCollection } from '../../hooks/rd/useRdCollection'
-import { styles,styles1 } from '../../style'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { styles,styles1 } from '../style'
 
 
 
 export default function RdCollection() {
 
-    const {RdId, setRdID, handleLoanPerson, mutation, data, handleChange, setData, collectin_date, setCollectiondate, handleChangeDate, handleSubmitAmount ,showDatePicker,isDatePickerVisible,handleConfirm,hideDatePicker} = useRdCollection()
+    const {RdId, setRdID, handleLoanPerson, mutation, data, handleChange, setData, collectin_date,  handleSubmitAmount ,showDatePicker,isDatePickerVisible,handleConfirm,hideDatePicker} = useRdCollection()
    
 
 
@@ -19,19 +19,19 @@ export default function RdCollection() {
         <Toast />
       </View>
 
-      <Text style={{ marginTop: 5 }}>Enter Loan ID</Text>
+      <Text style={{ marginTop: 5 }}>Enter RD ID</Text>
       <TextInput
         style={styles.input}
         value={RdId}
         onChangeText={(text: any) => setRdID(text)}
-        placeholder='Write Person ID'
+        placeholder='Write Rd ID'
       />
       <View style={{ marginTop: 10 }}>
         <Button title='Enter' color='green' onPress={handleLoanPerson} />
         {data && (
           <>
             <View style={{ display: 'flex', marginTop: 10, flexDirection: 'row' }}>
-              <Text>Loan Id : </Text>
+              <Text>Rd Id : </Text>
               <Text>{data.Rd_id}</Text>
             </View>
             <View style={{ display: 'flex', marginTop: 10, flexDirection: 'row' }}>

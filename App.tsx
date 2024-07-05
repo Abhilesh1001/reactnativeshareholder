@@ -19,8 +19,10 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { StateProps } from './type/user';
-import RdCollection from './app/loan/rd/RdCollection';
-import RdCollectionView from './app/loan/rd/RdCollectionView';
+import RdCollection from './app/rd/RdCollection';
+import RdCollectionView from './app/rd/RdCollectionView';
+
+
 
 
 export type RootStackParamList = {
@@ -51,8 +53,8 @@ function App() {
         <Stack.Screen name="Signup" component={Signup} options={{}} />
         <Stack.Screen name="LoanCollection" component={LoanCollection} />
         <Stack.Screen name="LoanCollectionView" component={LoanCollectionView} />
-        <Stack.Screen name="RdCollectionView" component={RdCollection} />
-        <Stack.Screen name="RdCollection" component={RdCollectionView} />
+        <Stack.Screen name="RdCollection" component={RdCollection} />
+        <Stack.Screen name="RdCollectionView" component={RdCollectionView} />
       </Stack.Navigator>
     </NavigationContainer>
   );

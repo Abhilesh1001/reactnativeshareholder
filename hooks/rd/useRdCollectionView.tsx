@@ -1,14 +1,13 @@
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import { useState } from "react"
-import { baseurl } from "../../alldata/basedata";
 import { useSelector } from "react-redux";
-import { StateProps } from "../../../type/user";
+import { StateProps } from "../../type/user";
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { baseurl } from "../../app/alldata/basedata";
+import axios from "axios";
 import Toast from "react-native-toast-message";
 
 
-
-export const useLoanCollection =()=>{
+export const useRdCollectionView=()=>{
 
     const { authToken, userId } = useSelector((state: StateProps) => state.counter)
     
@@ -16,7 +15,8 @@ export const useLoanCollection =()=>{
 
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
-    const [loanID, setLoanID] = useState();
+    const [rdId, setRdId] = useState();
+
 
     const handleLoanPerson = async () => {
        
@@ -28,11 +28,11 @@ export const useLoanCollection =()=>{
       
         mutation.mutate(data);
       };
-      
+
       const mutation = useMutation<any, any, any, any>({
         mutationFn: async (data) => {
           try {
-            return await axios.post(`${baseurl}loan/loanCollectionViewDate/${loanID}`, data, {
+            return await axios.post(`${baseurl}loan/rdCollectionViewDate/${rdId}`, data, {
               headers: {
                 Authorization: `Bearer ${authToken?.access}`
               }
@@ -56,10 +56,10 @@ export const useLoanCollection =()=>{
           });
         }
       });
-      
 
 
-    //   date picker 
+
+    // date picker /
 
     const showDatePicker = () => {
         setDatePickerVisibility(true);
@@ -77,5 +77,8 @@ export const useLoanCollection =()=>{
 
 
 
-    return {collectin_date,setCollectiondate,showDatePicker,isDatePickerVisible,handleConfirm,hideDatePicker,loanID, setLoanID,handleLoanPerson,mutation}
+
+
+
+    return {mutation,rdId, setRdId,showDatePicker,isDatePickerVisible,handleConfirm,hideDatePicker,collectin_date,handleLoanPerson}
 }

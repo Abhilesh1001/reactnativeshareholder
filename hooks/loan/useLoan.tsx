@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { baseurl } from "../../alldata/basedata";
-import { StateProps } from "../../../type/user";
+import { baseurl } from "../../app/alldata/basedata";
+import { StateProps } from "../../type/user";
 import { useState } from "react";
 import axios from "axios";
 import { useMutation } from "@tanstack/react-query";

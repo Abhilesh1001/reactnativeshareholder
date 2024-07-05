@@ -2,7 +2,7 @@ import { View, Text, Button, TextInput, ScrollView, SafeAreaView } from 'react-n
 import React, { useState } from 'react'
 import { styles1, styles } from '../style';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { useLoanCollection } from '../hooks/loan/useLoanColletion';
+import { useLoanCollection } from '../../hooks/loan/useLoanColletion';
 import Toast from 'react-native-toast-message';
 
 
